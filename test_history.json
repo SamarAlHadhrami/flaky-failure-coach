@@ -1,0 +1,44 @@
+{
+  "tests/test_flaky_timing.py::test_intermittent_api_call": [
+    { "timestamp": "2025-05-07T09:14:22Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-08T09:21:05Z", "result": "fail",  "error_type": "TimeoutError" },
+    { "timestamp": "2025-05-09T09:08:47Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-10T09:33:11Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-11T09:17:39Z", "result": "fail",  "error_type": "TimeoutError" },
+    { "timestamp": "2025-05-12T09:02:58Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-13T09:44:03Z", "result": "fail",  "error_type": "TimeoutError" },
+    { "timestamp": "2025-05-14T09:11:30Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-15T09:28:14Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-16T09:05:52Z", "result": "fail",  "error_type": "TimeoutError" },
+    { "timestamp": "2025-05-17T09:19:27Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-18T09:37:41Z", "result": "pass",  "error_type": null }
+  ],
+  "tests/test_real_regression.py::test_calculate_discount_for_member": [
+    { "timestamp": "2025-05-07T09:14:25Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-08T09:21:08Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-09T09:08:51Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-10T09:33:15Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-11T09:17:43Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-12T09:03:02Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-13T09:44:07Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-14T09:11:34Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-15T09:28:18Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-16T09:05:56Z", "result": "fail",  "error_type": "AssertionError" },
+    { "timestamp": "2025-05-17T09:19:31Z", "result": "fail",  "error_type": "AssertionError" },
+    { "timestamp": "2025-05-18T09:37:45Z", "result": "fail",  "error_type": "AssertionError" }
+  ],
+  "tests/test_env_failure.py::test_requires_api_key": [
+    { "timestamp": "2025-05-07T09:14:28Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-08T09:21:11Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-09T09:08:54Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-10T09:33:18Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-11T09:17:46Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-12T09:03:05Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-13T09:44:10Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-14T09:11:37Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-15T09:28:21Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-16T09:05:59Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-17T09:19:34Z", "result": "fail",  "error_type": "EnvMissing" },
+    { "timestamp": "2025-05-18T09:37:48Z", "result": "fail",  "error_type": "EnvMissing" }
+  ]
+}

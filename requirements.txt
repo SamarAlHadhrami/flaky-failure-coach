@@ -1,0 +1,6 @@
+# requirements.txt
+#
+# Runtime and test dependencies for the pytest demo project.
+# Install with:  pip install -r requirements.txt
+
+pytest
