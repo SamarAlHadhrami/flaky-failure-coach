@@ -1,6 +1,6 @@
 # Triage Report — `tests/test_flaky_timing.py::test_intermittent_api_call`
 
-_Generated: 2025-05-18_
+_Generated: 2025-05-21_
 
 ---
 
