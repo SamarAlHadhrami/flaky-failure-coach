@@ -40,5 +40,23 @@
     { "timestamp": "2025-05-16T09:05:59Z", "result": "fail",  "error_type": "EnvMissing" },
     { "timestamp": "2025-05-17T09:19:34Z", "result": "fail",  "error_type": "EnvMissing" },
     { "timestamp": "2025-05-18T09:37:48Z", "result": "fail",  "error_type": "EnvMissing" }
+  ],
+  "tests/test_external_dependency.py::test_payment_gateway_call": [
+    { "timestamp": "2025-05-08T10:05:13Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-09T10:12:47Z", "result": "fail",  "error_type": "ConnectionError" },
+    { "timestamp": "2025-05-10T10:08:31Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-11T10:22:04Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-12T10:15:58Z", "result": "fail",  "error_type": "ConnectionError" },
+    { "timestamp": "2025-05-13T10:03:29Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-14T10:31:44Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-15T10:09:17Z", "result": "fail",  "error_type": "ConnectionError" },
+    { "timestamp": "2025-05-16T10:27:52Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-17T10:14:36Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-18T10:41:08Z", "result": "fail",  "error_type": "ConnectionError" },
+    { "timestamp": "2025-05-19T10:06:55Z", "result": "pass",  "error_type": null }
+  ],
+  "tests/test_insufficient_evidence.py::test_new_feature_check": [
+    { "timestamp": "2025-05-18T11:03:22Z", "result": "pass",  "error_type": null },
+    { "timestamp": "2025-05-19T11:17:45Z", "result": "fail",  "error_type": "UnknownError" }
   ]
 }
