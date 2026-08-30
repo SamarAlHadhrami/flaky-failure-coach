@@ -1,43 +1,57 @@
-# Triage Report: `test_process_delayed_queue`
+# Triage Report — `test_process_delayed_queue`
 
 **File:** `tests/test_misleading_naming.py`
-**Date:** 2025-07-08
+**Date:** 2026-08-30
 
 ---
 
 ## 1. What happened
 
-The test fails every single run with an identical `AssertionError` caused by a deterministic off-by-one bug in `wait_for_queue_delay()`, not by any timing or concurrency issue.
+`test_process_delayed_queue` has failed on every one of its 12 recorded runs with an identical `AssertionError: assert 9 == 10`, caused by a deterministic off-by-one bug in `wait_for_queue_delay()`.
+
+---
 
 ## 2. Evidence
 
-- **History:** 12 runs, 0 passes, 12 fails — flip rate **0.0%**. All failures are `AssertionError` with the same value (9 ≠ 10).
-- **Code:** `wait_for_queue_delay()` iterates with `enumerate(items)` but stores `elapsed_slots = i` (0-based index) instead of `i + 1`, so for a 10-item list it always returns 9.
-- **No timing code:** zero `time.sleep`, `random`, threading, or network calls anywhere in the file. `QUEUE_TIMEOUT_MS` and `delay_budget` are never used for actual I/O — they are misleading variable names only.
-- **Assertion message** in the test itself confirms the root cause: *"it returns `i` instead of `i + 1`"*.
+| Signal | Detail |
+|--------|--------|
+| **Flip rate** | 0 % — 0 passes / 12 fails; never passed once |
+| **Error type** | `AssertionError` — same value every run (`9 == 10`) |
+| **No timing code** | Zero `time.sleep`, `random`, `threading`, or I/O calls in the file |
+| **Root cause in source** | `wait_for_queue_delay()` assigns `elapsed_slots = i` inside `enumerate(items)`, so the final value is `len(items) - 1` (i.e. 9 for a 10-item list), not `len(items)` |
+| **Misleading names** | `wait_for_queue_delay`, `delay_budget`, `timeout_threshold`, `QUEUE_TIMEOUT_MS` all imply timing, but none of these values affect execution |
+| **Assertion message** | Even the error string says *"looks like a timing issue but is actually an off-by-one"* |
 
-## 3. What it's calling it
+---
 
-**REAL BUG** — consistent, 100%-reproducible failure caused by a logic defect in the production helper function.
+## 3. Classification
 
-## 4. How confident
+**REAL BUG** — consistent pass-then-fail (here: never-passed) with a clear, identifiable logic defect and no intermittency whatsoever.
 
-**HIGH** — two independent signals agree: (a) 0% flip rate with 12 identical failures, and (b) direct code inspection confirms the off-by-one on line 39 of `test_misleading_naming.py`.
+---
 
-*Note: this is a heuristic assessment, not a scientific proof.*
+## 4. Confidence
+
+**HIGH** — multiple independent signals agree:
+- 0 % flip rate (no randomness)
+- Same numeric mismatch on every run
+- Off-by-one is directly visible in source (`elapsed_slots = i` instead of `i + 1`)
+- No timing, network, or environment signals present
+
+*(This is a heuristic assessment, not a scientific proof.)*
+
+---
 
 ## 5. What to do next
 
-**FIX** — change line 39 of `wait_for_queue_delay()` from:
+**FIX** the off-by-one in [`wait_for_queue_delay()`](../tests/test_misleading_naming.py#L39):
 
 ```python
-elapsed_slots = i          # BUG: should be `i + 1`
-```
+# Before (buggy)
+elapsed_slots = i
 
-to:
-
-```python
+# After (correct)
 elapsed_slots = i + 1
 ```
 
-This makes the function return the correct item count and the assertion will pass deterministically.
+The test assertion and all misleading variable names can remain unchanged — fixing the single line above makes the test pass deterministically.

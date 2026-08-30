@@ -1,3 +1,61 @@
+# Create reports/timing_comparison.md — a markdown file with a before/after timing comparison table for our flaky-failure-coach demo.
+
+Use this data:
+| Test | Manual (baseline) | Bob-assisted | Bob faster by |
+|---|---|---|---|
+| Flaky test | 54.03s | 48.00s | 6.03s |
+| Real regression | 53.86s | 51.35s | 2.51s |
+| Environment failure | 54.85s | 42.08s | 12.77s |
+| External dependency | 50.47s | 42.00s | 8.47s |
+| Insufficient evidence | 46.70s | 40.00s | 6.70s |
+
+Include the table exactly as given, plus a short summary line calculating the average manual time, average Bob-assisted time, and overall percentage improvement. Note clearly that Bob was faster on every single test case. Add a one-sentence note that these are real, manually measured timings, not estimates.
+
+---
+
+**Status:** active  **Date:** 2026-08-30
+
+---
+
+### 👤 User
+
+Create reports/timing_comparison.md — a markdown file with a before/after timing comparison table for our flaky-failure-coach demo.
+
+Use this data:
+| Test | Manual (baseline) | Bob-assisted | Bob faster by |
+|---|---|---|---|
+| Flaky test | 54.03s | 48.00s | 6.03s |
+| Real regression | 53.86s | 51.35s | 2.51s |
+| Environment failure | 54.85s | 42.08s | 12.77s |
+| External dependency | 50.47s | 42.00s | 8.47s |
+| Insufficient evidence | 46.70s | 40.00s | 6.70s |
+
+Include the table exactly as given, plus a short summary line calculating the average manual time, average Bob-assisted time, and overall percentage improvement. Note clearly that Bob was faster on every single test case. Add a one-sentence note that these are real, manually measured timings, not estimates.
+
+---
+
+### 🤖 Assistant
+
+> 🔧 called: execute_command, write_file
+
+
+
+> 🔧 **execute_command** — New-Item -ItemType Directory -Force -Path ./reports | Out-Null
+
+> 🔧 **write_file** — reports/timing_comparison.md
+
+### 🤖 Assistant
+
+Created [`reports/timing_comparison.md`](reports/timing_comparison.md).
+
+The summary figures were calculated from the provided data:
+
+- **Average manual:** (54.03 + 53.86 + 54.85 + 50.47 + 46.70) / 5 = **51.98s**
+- **Average Bob-assisted:** (48.00 + 51.35 + 42.08 + 42.00 + 40.00) / 5 = **44.69s**
+- **Improvement:** (51.98 − 44.69) / 51.98 × 100 ≈ **14.0%**
+
+===
+
 # Create a README.md for this project (IBM Bob Flaky Failure Investigation Coach) with these sections:
 
 1. Project name and one-sentence description
